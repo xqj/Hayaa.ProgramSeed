@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Hayaa.Seed.Component
 {
-    class ProgramSentinel
+   public class ProgramSentinel
     {
         internal void InitSentinelService()
         {
@@ -19,7 +19,8 @@ namespace Hayaa.Seed.Component
 
         private void CreateWebSentinel()
         {
-            throw new NotImplementedException();
+            var root = HttpContext.Current.Server.MapPath("~");
+
         }
 
         private void CreateWindowsSentinel()
