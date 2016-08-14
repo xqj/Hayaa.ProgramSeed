@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Component\ProgramInstanceEnvironment.cs" />
+    <Compile Include="Component\ProgramSentinel.cs" />
     <Compile Include="Model\InstanceEnvironmentInfo.cs" />
     <Compile Include="ProgramSeed.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

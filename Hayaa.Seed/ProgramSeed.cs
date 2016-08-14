@@ -11,8 +11,10 @@ namespace Hayaa.Seed
     {
         private static ProgramSeed _instance = new ProgramSeed();
         private ProgramInstanceEnvironment _ProgramInstanceEnvironment;
+        private ProgramSentinel _ProgramSentinel;
         private ProgramSeed() {
             _ProgramInstanceEnvironment = new ProgramInstanceEnvironment();
+            _ProgramSentinel = new ProgramSentinel();
         }
         public static ProgramSeed Instance
         {
@@ -21,7 +23,7 @@ namespace Hayaa.Seed
                 return _instance;
             }           
         }
-        
+         
         private InstanceEnvironmentInfo Environment;
         public string InitProgram()
         {
@@ -33,10 +35,12 @@ namespace Hayaa.Seed
                 Environment= _ProgramInstanceEnvironment.ScanEnvironment();
                 ///创建侦听服务
                 //web创建侦听页，非web创建tcp侦听线程
+                _ProgramSentinel.InitSentinelService();
                 ///检查本地配置是否支持分布式配置系统
                 //支持分布式配置系统则获取配置
                 //检查是否支持服务工厂,支持服务工厂创建所有服务并将所有服务方法测试一遍
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
                 return ex.Message;
             }
