@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
+using System.Xml;
+
 namespace Hayaa.Seed.Model
 {
     
@@ -12,8 +15,17 @@ namespace Hayaa.Seed.Model
     /// 此对象存储在程序对象本地config文件
     /// 不做远程数据配置
     /// </summary>
-    public class AppConfiguration
+    public class AppConfiguration : IConfigurationSectionHandler
     {
+        public AppConfiguration()
+        {
+            IsAppSettingWebConfig = true;
+            IsConnectionStringWebConfig = true;
+        }
+        public bool IsAppSettingWebConfig
+        { set; get; }
+        public bool IsConnectionStringWebConfig
+        { set; get; }
         public int AppID { set; get; }
         /// <summary>
         /// 是否文件方式加载配置，不是则以内存方式加载
@@ -64,6 +76,11 @@ namespace Hayaa.Seed.Model
         /// 服务侦听地址
         /// </summary>
         public string SentinelUrl { set; get; }
+
+        public object Create(object parent, object configContext, XmlNode section)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

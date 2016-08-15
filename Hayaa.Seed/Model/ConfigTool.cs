@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Hayaa.Seed.Component;
+using Hayaa.Seed.Config;
 using Hayaa.Seed.Model;
+using Hayaa.Seed.Util;
 
 namespace Hayaa.Seed.Model
 {
