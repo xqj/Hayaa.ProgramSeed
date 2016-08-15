@@ -34,6 +34,8 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,11 +44,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Component\ProgramDistributedConfig.cs" />
     <Compile Include="Component\ProgramInstanceEnvironment.cs" />
     <Compile Include="Component\ProgramSentinel.cs" />
+    <Compile Include="Model\AppConfiguration.cs" />
+    <Compile Include="Model\ComponentConfigs.cs" />
+    <Compile Include="Model\ConfigContent.cs" />
+    <Compile Include="Model\ConfigSolution.cs" />
+    <Compile Include="Model\DataAccessConfiguration.cs" />
     <Compile Include="Model\InstanceEnvironmentInfo.cs" />
+    <Compile Include="Model\Rel_ConfigSolution_AppUser_Component.cs" />
     <Compile Include="ProgramSeed.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SentinelService.cs" />
+    <Compile Include="Model\ConfigTool.cs" />
+    <Compile Include="Util\FunctionResultProxy.cs" />
+    <Compile Include="Util\HttpRequestHelper.cs" />
+    <Compile Include="Util\SecurityProvider.cs" />
+    <Compile Include="Util\Util.cs" />
+    <Compile Include="Util\XmlConfigSerializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
