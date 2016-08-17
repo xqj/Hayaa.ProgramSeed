@@ -21,7 +21,10 @@ namespace Hayaa.Seed.Model
         {
             IsAppSettingWebConfig = true;
             IsConnectionStringWebConfig = true;
+            IsDistrbutedConfig = false;
         }
+        public bool IsDistrbutedConfig
+        { set; get; }
         public bool IsAppSettingWebConfig
         { set; get; }
         public bool IsConnectionStringWebConfig
@@ -79,7 +82,26 @@ namespace Hayaa.Seed.Model
 
         public object Create(object parent, object configContext, XmlNode section)
         {
-            throw new NotImplementedException();
+            AppConfiguration configObj = new AppConfiguration();
+            configObj.IsDistrbutedConfig = false;
+            var baseConfig = section.SelectSingleNode("BaseConfig");
+            if (baseConfig != null)
+            {
+                configObj.IsDistrbutedConfig = Convert.ToBoolean(baseConfig.Attributes["IsDistrbutedConfig"].Value);
+                configObj.IsFileLoad = Convert.ToBoolean(baseConfig.Attributes["IsFileLoad"].Value);
+                configObj.IsRemote = Convert.ToBoolean(baseConfig.Attributes["IsRemote"].Value);
+                configObj.SolutionId =  Guid.Parse(baseConfig.Attributes["SolutionId"].Value);
+                configObj.Version =Convert.ToInt32(baseConfig.Attributes["Version"].Value);
+                configObj.RemoteConfigServer = baseConfig.Attributes["RemoteConfigServer"].Value;
+                configObj.LocalConfigFilePath = baseConfig.Attributes["LocalConfigFilePath"].Value;
+                configObj.ConfigFileName = baseConfig.Attributes["ConfigFileName"].Value;
+                configObj.AppID = Convert.ToInt32(baseConfig.Attributes["AppID"].Value);
+                configObj.IsVirtualPath = Convert.ToBoolean(baseConfig.Attributes["IsVirtualPath"].Value);
+                configObj.SentinelUrl = baseConfig.Attributes["SentinelUrl"].Value;
+                configObj.IsAppSettingWebConfig = Convert.ToBoolean(baseConfig.Attributes["IsAppSettingWebConfig"].Value);
+                configObj.IsConnectionStringWebConfig = Convert.ToBoolean(baseConfig.Attributes["IsConnectionStringWebConfig"].Value);
+            }
+            return configObj;
         }
     }
 }

@@ -16,7 +16,19 @@ namespace Hayaa.Seed.Component
     {
         private ConfigSolution _solutionConfig;
         private AppConfiguration _appConfig;
-        public ProgramDistributedConfig()
+        private static ProgramDistributedConfig _instance = new ProgramDistributedConfig();
+
+        internal static ProgramDistributedConfig Instance
+        {
+            get
+            {
+                return _instance;
+            }
+
+          
+        }
+
+        private ProgramDistributedConfig()
         {
             _solutionConfig = new ConfigSolution()
             {
@@ -28,9 +40,15 @@ namespace Hayaa.Seed.Component
                 IsFile = true,
                 SolutionName = "本地配置",
                 Version = 0,
-
-
             };//构造函数默认对象内属性数值，默认为本地模式参数
+            try
+            {
+                _appConfig = ReadAppConfig();//防止基础配置不存在或者错误导致程序无法启动
+            }
+            catch (Exception ex)
+            {
+                _appConfig = new AppConfiguration() { IsFileLoad = true, Version = 0, SolutionId = Guid.Empty, IsRemote = false };//错误配置下给予最小化配置               
+            }
         }
         internal bool IsEmpty()
         {
@@ -47,23 +65,11 @@ namespace Hayaa.Seed.Component
         public InitResult RunInAppStartInit()
         {
             var r = new InitResult() { Result = true };
-            AppConfiguration appConfig = null;
-            try
+            if (_appConfig.IsRemote)//判断是否读取远程配置模式
             {
-                appConfig = ReadAppConfig();//防止基础配置不存在或者错误导致程序无法启动
-                _appConfig = appConfig;
+                ReadRemote(_appConfig);//读取远程配置
             }
-            catch (Exception ex)
-            {
-                appConfig = new AppConfiguration() { IsFileLoad = true, Version = 0, SolutionId = Guid.Empty, IsRemote = false };//错误配置下给予最小化配置
-                r.Result = false;
-                r.Message = ex.Message;
-            }
-            if (appConfig.IsRemote)//判断是否读取远程配置模式
-            {
-                ReadRemote(appConfig);//读取远程配置
-            }
-            ReadLocal(appConfig, r);//读取本地配置 
+            ReadLocal(_appConfig, r);//读取本地配置 
             return r;
         }
         public ComponentConfig GetComponentConfig(int componetID)
@@ -162,9 +168,9 @@ namespace Hayaa.Seed.Component
             try
             {
                 var apiStoreUser = SecurityProvider.GetApiStoreUser();
-                dic.Add(DefineTable.ApiStore_UserNameParam, apiStoreUser.UserName);
-                dic.Add(DefineTable.ApiStore_PasswordParam, apiStoreUser.Password);
-                dic.Add(DefineTable.ApiStore_TokenParam, apiStoreUser.Token);
+               // dic.Add(DefineTable.ApiStore_UserNameParam, apiStoreUser.UserName);
+               // dic.Add(DefineTable.ApiStore_PasswordParam, apiStoreUser.Password);
+               // dic.Add(DefineTable.ApiStore_TokenParam, apiStoreUser.Token);
                 str = HttpRequestHelper.Instance.GetNormalRequestResult(url + "/" + DefineTable.GetRmoteConfigAction, dic);
                 str = HttpUtility.UrlDecode(str);
                 result = XmlConfigSerializer.Instance.FromXml<ConfigSolution>(str);
@@ -189,17 +195,7 @@ namespace Hayaa.Seed.Component
             };
             try
             {
-                r.IsFileLoad = bool.Parse(ConfigurationManager.AppSettings[DefineTable.IsFileLoad]);
-                r.IsRemote = bool.Parse(ConfigurationManager.AppSettings[DefineTable.IsRemote]);
-                r.SolutionId = Guid.Parse(ConfigurationManager.AppSettings[DefineTable.SolutionId]);
-                r.Version = int.Parse(ConfigurationManager.AppSettings[DefineTable.SolutionVersion]);
-                r.RemoteConfigServer = ConfigurationManager.AppSettings[DefineTable.RemoteConfigServerUrl];
-                r.LocalConfigFilePath = ConfigurationManager.AppSettings[DefineTable.LocalConfigFilePath];
-                r.ConfigFileName = ConfigurationManager.AppSettings[DefineTable.ConfigFileName];
-                r.AppID = int.Parse(ConfigurationManager.AppSettings[DefineTable.AppID]);
-                r.IsVirtualPath = bool.Parse(ConfigurationManager.AppSettings[DefineTable.IsVirtualPath]);
-                r.SentinelUrl = ConfigurationManager.AppSettings[DefineTable.SentinelUrl];
-
+                r = (AppConfiguration)ConfigurationManager.GetSection("AppConfiguration");
             }
             catch (Exception ex)
             {

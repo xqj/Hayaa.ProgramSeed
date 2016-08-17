@@ -49,7 +49,6 @@
     <Compile Include="Component\ProgramInstanceEnvironment.cs" />
     <Compile Include="Component\ProgramSentinel.cs" />
     <Compile Include="Config\DefineTable.cs" />
-    <Compile Include="Model\ApiClientConfigurate.cs" />
     <Compile Include="Model\AppConfiguration.cs" />
     <Compile Include="Model\ComponentConfigs.cs" />
     <Compile Include="Model\ConfigContent.cs" />
