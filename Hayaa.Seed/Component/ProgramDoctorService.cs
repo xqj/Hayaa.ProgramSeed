@@ -5,7 +5,7 @@ using System.Text;
 using Hayaa.Seed.Component;
 using Hayaa.Seed.Model;
 
-namespace ApiStore.ApiConfigClient
+namespace Hayaa.Seed.Component
 {
     internal class ProgramDoctorService
     {

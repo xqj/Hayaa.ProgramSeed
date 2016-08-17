@@ -58,6 +58,10 @@ namespace Hayaa.Seed.Component
             }
             return false;
         }
+        internal bool IsFactory()
+        {
+            return _solutionConfig.IsFactory;
+        }
         /// <summary>
         /// 在程序第一次运行时运行此方法获取配置
         /// </summary>

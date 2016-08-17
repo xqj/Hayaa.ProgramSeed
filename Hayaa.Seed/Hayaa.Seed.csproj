@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Component\ProgramDoctorService.cs" />
-    <Compile Include="Component\PlatformServiceFactory.cs" />
+    <Compile Include="Component\ProgramPlatformServiceFactory.cs" />
     <Compile Include="Component\ProgramDistributedConfig.cs" />
     <Compile Include="Component\ProgramInstanceEnvironment.cs" />
     <Compile Include="Component\ProgramSentinel.cs" />

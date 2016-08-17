@@ -38,8 +38,13 @@ namespace Hayaa.Seed
                 result=_ProgramSentinel.InitSentinelService();
                 ///检查本地配置是否支持分布式配置系统
                 //支持分布式配置系统则获取配置
-                ProgramDistributedConfig.Instance.RunInAppStartInit();          
+                ProgramDistributedConfig.Instance.RunInAppStartInit();
                 //检查是否支持服务工厂,支持服务工厂创建所有服务并将所有服务方法测试一遍
+                if (ProgramDistributedConfig.Instance.IsFactory())
+                {
+                    string msg = "";
+                    ProgramDoctorService.Instance.Test(ref msg);
+                }
             }
             catch(Exception ex)
             {
