@@ -10,7 +10,13 @@ namespace Hayaa.Seed.Model
     [DataContract]
     public class ConfigSolution
     {
-
+        public bool IsFactory
+        {
+            get {
+                return !((this.Workers == null) || (this.Workers.Count == 0));
+            }
+            
+        }
         /// <summary>
         /// ID
         /// </summary>	
@@ -105,7 +111,7 @@ namespace Hayaa.Seed.Model
         [DataMember]
         public List<ComponentConfig> Components { get; set; }
         [DataMember]
-        public List<Rel_ConfigSolution_AppUser_Component> AppUserServices { get; set; }
+        public List<ServiceWorker> Workers { get; set; }
 
     }
 }

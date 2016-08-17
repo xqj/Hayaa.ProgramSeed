@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 namespace Hayaa.Seed.Model
 {
     //Rel_ConfigSolution_AppUser_Component
-    public class Rel_ConfigSolution_AppUser_Component
+    public class ServiceWorker
     {
 
         /// <summary>
