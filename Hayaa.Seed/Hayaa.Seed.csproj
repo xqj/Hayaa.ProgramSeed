@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Component\DoctorService.cs" />
+    <Compile Include="Component\ProgramDoctorService.cs" />
     <Compile Include="Component\PlatformServiceFactory.cs" />
     <Compile Include="Component\ProgramDistributedConfig.cs" />
     <Compile Include="Component\ProgramInstanceEnvironment.cs" />

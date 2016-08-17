@@ -1,24 +1,24 @@
-﻿using ApiStore.ApiConfigClient.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Hayaa.Seed.Component;
+using Hayaa.Seed.Model;
 
 namespace ApiStore.ApiConfigClient
 {
-    internal class DoctorService
+    internal class ProgramDoctorService
     {
-        private List<Rel_ConfigSolution_AppUser_Component> _serviceData;
-        private static DoctorService _instance = new DoctorService();
+        private List<ServiceWorker> _serviceData;
+        private static ProgramDoctorService _instance = new ProgramDoctorService();
 
-        public static DoctorService Instance
+        public static ProgramDoctorService Instance
         {
             get { return _instance; }
         }
-        private DoctorService()
+        private ProgramDoctorService()
         {
-            var clientConfig = ConfigClientFactory.Instance.GetConfigClient();
-            _serviceData = clientConfig.GetAppUserServiceConfigs();           
+            _serviceData = ProgramDistributedConfig.Instance.GetServiceWorkers();
         }
         public bool Test(ref string msg)
         {
@@ -30,7 +30,7 @@ namespace ApiStore.ApiConfigClient
             _serviceData.ForEach(a => {
                 if (a == null) return;
                 if (a.ComponentType == 2) return;
-                var obj=PlatformServiceFactory.Instance.CreateServiceForTest(a.AppUserID, a.ComponentInterface);
+                var obj=ProgramPlatformServiceFactory.Instance.CreateServiceForTest(a.AppUserID, a.ComponentInterface);
                 Type t = Type.GetType(a.ComponentInterface);
                 var methods=t.GetMethods();
                 for (var i = 0; i < methods.Length; i++)

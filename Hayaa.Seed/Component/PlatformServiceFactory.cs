@@ -11,21 +11,21 @@ using Hayaa.Seed.Util;
 
 namespace Hayaa.Seed.Component
 {
-    public class PlatformServiceFactory
+    public class ProgramPlatformServiceFactory
     {
         private Dictionary<int, Dictionary<string, ServiceWorker>> _serviceData;
         private ConcurrentDictionary<string, Assembly> _assembliesData;
-        private static PlatformServiceFactory _instance = new PlatformServiceFactory();
+        private static ProgramPlatformServiceFactory _instance = new ProgramPlatformServiceFactory();
 
-        public static PlatformServiceFactory Instance
+        public static ProgramPlatformServiceFactory Instance
         {
             get { return _instance; }
         }
-        private PlatformServiceFactory()
+        private ProgramPlatformServiceFactory()
         {
             _assembliesData = new ConcurrentDictionary<string, Assembly>();
             _serviceData = new Dictionary<int, Dictionary<string, ServiceWorker>>();
-            InitData(ProgramDistributedConfig.Instance.GetAppUserServiceConfigs());
+            InitData(ProgramDistributedConfig.Instance.GetServiceWorkers());
             
         }
         private void InitData(List<ServiceWorker> appServiceConfigs)
@@ -60,7 +60,7 @@ namespace Hayaa.Seed.Component
             var key = typeof(T).FullName;
             if (_serviceData.Count == 0)
             {
-                InitData(ProgramDistributedConfig.Instance.GetAppUserServiceConfigs());
+                InitData(ProgramDistributedConfig.Instance.GetServiceWorkers());
             }
             if (_serviceData[appUserID].ContainsKey(key))
             {
@@ -78,7 +78,7 @@ namespace Hayaa.Seed.Component
             var key = typeof(T).FullName;
             if (_serviceData.Count == 0)
             {
-                InitData(ProgramDistributedConfig.Instance.GetAppUserServiceConfigs());
+                InitData(ProgramDistributedConfig.Instance.GetServiceWorkers());
             }
             if (_serviceData[appUserID].ContainsKey(key))
             {
@@ -116,7 +116,7 @@ namespace Hayaa.Seed.Component
             var key = interfaceName;
             if (_serviceData.Count == 0)
             {
-                InitData(ProgramDistributedConfig.Instance.GetAppUserServiceConfigs());
+                InitData(ProgramDistributedConfig.Instance.GetServiceWorkers());
             }
             if (_serviceData[appUserID].ContainsKey(key))
             {

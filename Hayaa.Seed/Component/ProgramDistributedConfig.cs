@@ -77,7 +77,7 @@ namespace Hayaa.Seed.Component
             //构造函数完成无null初始化设置
             return _solutionConfig.Components.Find(c => c.ComponentID == componetID);
         }
-        public List<ServiceWorker> GetAppUserServiceConfigs()
+        public List<ServiceWorker> GetServiceWorkers()
         {
             return _solutionConfig.Workers;
         }
