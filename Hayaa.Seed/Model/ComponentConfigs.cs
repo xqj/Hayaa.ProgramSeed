@@ -88,6 +88,33 @@ namespace Hayaa.Seed.Model
          [DataMember]
         public string ComponentConfigTitle { get; set; }
 
+        private bool _IsAppsetingWebConfig = true;
+        [DataMember]
+        public bool IsAppsetingWebConfig
+        {
+            get
+            {
+                return _IsAppsetingWebConfig;
+            }
+            set
+            {
+                _IsAppsetingWebConfig = value;
+            }
+        }
+        private bool _IsConnectionStringWebConfig = true;
+        [DataMember]
+        public bool IsConnectionStringWebConfig
+        {
+            get
+            {
+                return _IsConnectionStringWebConfig;
+            }
+            set
+            {
+                _IsConnectionStringWebConfig = value;
+            }
+        }
+
     }
 }
 

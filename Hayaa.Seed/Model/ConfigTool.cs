@@ -21,18 +21,40 @@ namespace Hayaa.Seed.Model
        public ConfigTool(int componentID)
        {
             var appConfig = ProgramDistributedConfig.Instance.GetAppConfig();
-            _IsWebConfig = !appConfig.IsDistrbutedConfig;
-            _IsAppsetingWebConfig = appConfig.IsAppSettingWebConfig;
-            _IsConnectionStringWebConfig = appConfig.IsConnectionStringWebConfig;
+            _IsWebConfig = !appConfig.IsDistrbutedConfig;          
            if (!IsWebConfig)
            {
-               _compoentConfig = ProgramDistributedConfig.Instance.GetComponentConfig(componentID);//不进行null检查保证配置初始化出现问题时爆出异常
-               _config = XmlConfigSerializer.Instance.FromXml<T>(_compoentConfig.Content);//不进行null检查保证配置初始化出现问题时爆出异常
-           }
+                try {
+                    _compoentConfig = ProgramDistributedConfig.Instance.GetComponentConfig(componentID);
+                    _config = XmlConfigSerializer.Instance.FromXml<T>(_compoentConfig.Content);
+                }catch(Exception ex)
+                {
+                    _IsConfigException = true;
+                    _ConfigExceptionMsg = ex.Message;
+                }
+                _IsAppsetingWebConfig = _compoentConfig.IsAppsetingWebConfig;
+                _IsConnectionStringWebConfig = _compoentConfig.IsConnectionStringWebConfig;
+            }
        }
        public  T GetComponentConfig(){
            return _config;
        }
+        private string _ConfigExceptionMsg = "";
+        public string IsConfigExceptionMsg
+        {
+            get
+            {
+                return _ConfigExceptionMsg;
+            }
+        }
+        private bool _IsConfigException = false;
+        public bool IsConfigException
+        {
+            get
+            {
+                return _IsConfigException;
+            }
+        }
         private bool _IsWebConfig = true;
        public bool IsWebConfig
        {
