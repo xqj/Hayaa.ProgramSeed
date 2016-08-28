@@ -79,6 +79,23 @@ namespace Hayaa.Seed.Model
                 return _IsConnectionStringWebConfig;
             }
         }
+        public EnumDatabaseType GetDatabaseType(string name, EnumDatabaseType databaseType)
+        {
+            if (IsConnectionStringWebConfig)
+            {
+                return databaseType;
+            }
+            else
+            {
+                var baseConfig = (ConfigContent)_config;
+                var con = baseConfig.connectionStrings.add.Find(c => c.name == name);
+                if (con != null)
+                {
+                    return con.databaseType;
+                }
+                return databaseType;
+            }
+        }
         /// <summary>
         /// 获取连接字符串
         /// </summary>

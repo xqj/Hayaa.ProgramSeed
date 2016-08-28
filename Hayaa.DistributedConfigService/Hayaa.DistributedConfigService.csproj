@@ -36,6 +36,9 @@
     <Reference Include="Hayaa.BaseComponent.DataAccess">
       <HintPath>..\Dll\Hayaa.BaseComponent.DataAccess.dll</HintPath>
     </Reference>
+    <Reference Include="Hayaa.Seed">
+      <HintPath>..\Dll\Hayaa.Seed.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data">
       <HintPath>..\Dll\MySql.Data.dll</HintPath>
     </Reference>
@@ -57,6 +60,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\ConfigHelper.cs" />
+    <Compile Include="Config\DefineTable.cs" />
+    <Compile Include="Config\DistributedConfig.cs" />
+    <Compile Include="Dal\AppSolutionDal.cs" />
+    <Compile Include="DistributedConfigServer%271.cs" />
     <Compile Include="DistributedConfigServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -66,6 +74,7 @@
       <Name>Hayaa.DistributedConfigService.Interface</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
