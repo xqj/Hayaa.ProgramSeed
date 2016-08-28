@@ -53,9 +53,50 @@ namespace Hayaa.Seed.Model
             [DataMember]
             [XmlAttribute]
             public string connectionString;
+            private EnumDatabaseType _databaseType = EnumDatabaseType.SqlServer;
+            /// <summary>
+            /// 数据库类型
+            /// </summary>
+            [DataMember]
+            [XmlAttribute]
+            public EnumDatabaseType databaseType { set { _databaseType = value; } get { return _databaseType; } }
+            private bool _multipleBase = false;
+            /// <summary>
+            /// 是否分库
+            /// </summary>
+            [DataMember]
+            [XmlAttribute]
+            public bool multipleBase { set { _multipleBase = value; } get { return _multipleBase; } }
+            private EnumMultipleType _multipleType = EnumMultipleType.MultipleByMode;
+            /// <summary>
+            /// 分库模式
+            /// </summary>
+            [DataMember]
+            [XmlAttribute]
+            public EnumMultipleType multipleType { set { _multipleType = value; } get { return _multipleType; } }
         }
     }
-
+    public enum EnumDatabaseType
+    {
+        SqlServer = 1,
+        //Oracle = 2,
+        MySql = 4,
+    }
+    public enum EnumMultipleType
+    {
+        /// <summary>
+        /// 没有分库类型
+        /// </summary>
+        NoMultiple=1,
+        /// <summary>
+        /// 以id首位数字分配
+        /// </summary>
+        MultipleByID = 2,
+        /// <summary>
+        /// 以模选择分库
+        /// </summary>
+        MultipleByMode = 4
+    }
     [DataContract]
     public class ServiceModelClass
     {

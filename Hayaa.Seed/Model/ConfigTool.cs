@@ -85,7 +85,7 @@ namespace Hayaa.Seed.Model
         /// <param name="name"></param>
         /// <param name="defaultVal"></param>
         /// <returns></returns>
-        public string GetConnection(string name,string defaultVal)
+        public string GetConnection(string name,string defaultVal,long? multipleFiled=null)
        {
            if(IsConnectionStringWebConfig){
            string val=defaultVal;
@@ -94,22 +94,43 @@ namespace Hayaa.Seed.Model
                }catch{}
                 return val;
            }
-           return GetCon(name,defaultVal);
+           return GetCon(name,defaultVal, multipleFiled.HasValue? multipleFiled.Value:0);
        }
-       private string GetCon(string name, string defaultVal)
+       private string GetCon(string name, string defaultVal, long multipleFiled)
        {
            var baseConfig = (ConfigContent)_config;
            var con = baseConfig.connectionStrings.add.Find(c => c.name == name);
-           if (con != null) return con.connectionString;
+            if (con != null) {
+               
+                return ParseCon(con.connectionString, multipleFiled, con.multipleType); }
            return defaultVal;
-       }
-       /// <summary>
-       /// 获取AppSetting配置
-       /// </summary>
-       /// <param name="key"></param>
-       /// <param name="defaultVal"></param>
-       /// <returns></returns>
-       public string GetAppsetting(string key, string defaultVal)
+        }  /// <summary>
+           /// 分库的链接字符串形式:数据库名_{0}的模板化配置
+           /// 而且主键必须是整数和长整数
+           /// </summary>
+           /// <param name="connectionString"></param>
+           /// <returns></returns>
+        private static string ParseCon(string connectionString, long multipleFiled, EnumMultipleType multipleType= EnumMultipleType.NoMultiple)
+        {
+            switch (multipleType)
+            {
+                case EnumMultipleType.NoMultiple:
+                    return connectionString;
+                case EnumMultipleType.MultipleByID:
+                    if (multipleFiled == 0) return string.Format(connectionString, "1"); ;
+                    return string.Format(connectionString, multipleFiled.ToString().Substring(0, 1));
+                case EnumMultipleType.MultipleByMode:
+                    return string.Format(connectionString, multipleFiled % 10);
+            }
+            return connectionString;
+        }
+        /// <summary>
+        /// 获取AppSetting配置
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="defaultVal"></param>
+        /// <returns></returns>
+        public string GetAppsetting(string key, string defaultVal)
        {
            if (IsAppsetingWebConfig)
            {
