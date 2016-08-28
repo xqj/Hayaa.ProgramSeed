@@ -11,13 +11,12 @@ namespace Hayaa.DistributedConfigService.Dal
 {
     class AppSolutionDal
     {
-      
+
         internal static AppSolution Get(Guid solutionID)
         {
-            var configDatabaseType = ConfigHelper.Intance.GetDatabaseType("DistributedConfig_RW", Hayaa.Seed.Model.EnumDatabaseType.SqlServer);
             var conStr = ConfigHelper.Intance.GetConnection("DistributedConfig_RW", "");
-            var service = DataAccessService.Intance.CreateIntance((Hayaa.BaseComponent.DataAccess.Config.EnumDatabaseType)configDatabaseType);
-          return  service.GetData<AppSolution,object>(conStr, "select * from AppSolution", new { id=solutionID});
+            var service = ConfigHelper.Intance.CreateDataService("DistributedConfig_RW");
+            return service.GetData<AppSolution, object>(conStr, "select * from AppSolution", new { id = solutionID });
         }
     }
 }
