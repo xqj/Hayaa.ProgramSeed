@@ -13,6 +13,11 @@ namespace Hayaa.DistributedConfigService
         public AppSolution GetRemoteConfig(Guid solutionID, int version)
         {
             AppSolution appsoulution = AppSolutionDal.Get(solutionID);
+            if (appsoulution != null)
+            {
+                ComponentConfigDal.GetComponentConfigs(solutionID)
+            }
+            return appsoulution;
         }
     }
 }

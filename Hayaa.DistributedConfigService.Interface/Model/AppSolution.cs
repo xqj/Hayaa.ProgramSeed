@@ -9,14 +9,7 @@ namespace Hayaa.DistributedConfigService.Interface.Model
     [DataContract]
     public class AppSolution
     {
-        public bool IsFactory
-        {
-            get
-            {
-                return !((this.Workers == null) || (this.Workers.Count == 0));
-            }
-
-        }
+        
         /// <summary>
         /// ID
         /// </summary>	
