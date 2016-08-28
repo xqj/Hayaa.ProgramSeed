@@ -14,7 +14,7 @@ namespace Hayaa.Seed.Component
    
     class ProgramDistributedConfig
     {
-        private ConfigSolution _solutionConfig;
+        private AppSolution _solutionConfig;
         private AppConfiguration _appConfig;
         private static ProgramDistributedConfig _instance = new ProgramDistributedConfig();
 
@@ -30,7 +30,7 @@ namespace Hayaa.Seed.Component
 
         private ProgramDistributedConfig()
         {
-            _solutionConfig = new ConfigSolution()
+            _solutionConfig = new AppSolution()
             {
                 Components = new List<ComponentConfig>(),
                 ConfigContent = "",
@@ -103,7 +103,7 @@ namespace Hayaa.Seed.Component
             }
             try
             {
-                var temp = XmlConfigSerializer.Instance.FromXmlFile<ConfigSolution>(appConfig.LocalConfigFilePath + "/" + appConfig.ConfigFileName);
+                var temp = XmlConfigSerializer.Instance.FromXmlFile<AppSolution>(appConfig.LocalConfigFilePath + "/" + appConfig.ConfigFileName);
                 if (temp != null)//使用构造函数里的数值，避免多位置同效代码赋值
                 {
                     _solutionConfig = temp;
@@ -117,7 +117,7 @@ namespace Hayaa.Seed.Component
             }
 
         }
-        private ConfigSolution ReadLocal(AppConfiguration appConfig)
+        private AppSolution ReadLocal(AppConfiguration appConfig)
         {
             if (string.IsNullOrEmpty(appConfig.LocalConfigFilePath) && string.IsNullOrEmpty(appConfig.ConfigFileName))//如果没有默认路径和默认文件配置不读取
             {
@@ -125,7 +125,7 @@ namespace Hayaa.Seed.Component
             }
             try
             {
-                var temp = XmlConfigSerializer.Instance.FromXmlFile<ConfigSolution>(appConfig.LocalConfigFilePath + "/" + appConfig.ConfigFileName);
+                var temp = XmlConfigSerializer.Instance.FromXmlFile<AppSolution>(appConfig.LocalConfigFilePath + "/" + appConfig.ConfigFileName);
                 return temp;
             }
             catch (Exception ex)//预期异常：格式错误，错误内容
@@ -139,7 +139,7 @@ namespace Hayaa.Seed.Component
 
             if (appConfig.IsFileLoad)
             {
-                ConfigSolution localconfig = null;
+                AppSolution localconfig = null;
                 //判断配置文件是否已经存在
                 if (File.Exists(appConfig.LocalConfigFilePath + "/" + appConfig.ConfigFileName))
                 {
@@ -163,12 +163,12 @@ namespace Hayaa.Seed.Component
                 }
             }
         }
-        private ConfigSolution GetRemote(string url, Guid solutionID)
+        private AppSolution GetRemote(string url, Guid solutionID)
         {
             var dic = new Dictionary<string, string>();
             dic.Add(DefineTable.SolutionIDParam, solutionID.ToString());
             string str = "";
-            ConfigSolution result = null;
+            AppSolution result = null;
             try
             {
                 var apiStoreUser = SecurityProvider.GetApiStoreUser();
@@ -177,7 +177,7 @@ namespace Hayaa.Seed.Component
                // dic.Add(DefineTable.ApiStore_TokenParam, apiStoreUser.Token);
                 str = HttpRequestHelper.Instance.GetNormalRequestResult(url + "/" + DefineTable.GetRmoteConfigAction, dic);
                 str = HttpUtility.UrlDecode(str);
-                result = XmlConfigSerializer.Instance.FromXml<ConfigSolution>(str);
+                result = XmlConfigSerializer.Instance.FromXml<AppSolution>(str);
             }
             catch (Exception ex)
             {
@@ -212,7 +212,7 @@ namespace Hayaa.Seed.Component
             return r;
         }
 
-        internal ConfigSolution GetLocalConfig()
+        internal AppSolution GetLocalConfig()
         {
             return ReadLocal(_appConfig);
         }

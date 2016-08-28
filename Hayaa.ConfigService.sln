@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hayaa.DistributedConfigServ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hayaa.DistributedConfigService.Interface", "Hayaa.DistributedConfigService.Interface\Hayaa.DistributedConfigService.Interface.csproj", "{FEB6B2AF-C797-454D-981F-E6C7D1E3E41D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{9FFF652C-6B4A-45C6-BA09-85A297E099E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

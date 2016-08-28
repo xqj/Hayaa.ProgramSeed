@@ -1,21 +1,21 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
-using System.Data;
-
+using System.Linq;
 using System.Runtime.Serialization;
-namespace Hayaa.Seed.Model
+using System.Text;
+
+namespace Hayaa.DistributedConfigService.Interface.Model
 {
-    //ConfigSolution
     [DataContract]
-    public class ConfigSolution
+    public class AppSolution
     {
         public bool IsFactory
         {
-            get {
+            get
+            {
                 return !((this.Workers == null) || (this.Workers.Count == 0));
             }
-            
+
         }
         /// <summary>
         /// ID
@@ -115,4 +115,3 @@ namespace Hayaa.Seed.Model
 
     }
 }
-

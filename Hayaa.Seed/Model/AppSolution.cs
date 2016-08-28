@@ -2,14 +2,21 @@
 using System.Text;
 using System.Collections.Generic;
 using System.Data;
+
 using System.Runtime.Serialization;
 namespace Hayaa.Seed.Model
 {
-    //Rel_ConfigSolution_AppUser_Component
+    //ConfigSolution
     [DataContract]
-    public class ServiceWorker
+    public class AppSolution
     {
-
+        public bool IsFactory
+        {
+            get {
+                return !((this.Workers == null) || (this.Workers.Count == 0));
+            }
+            
+        }
         /// <summary>
         /// ID
         /// </summary>	
@@ -29,84 +36,46 @@ namespace Hayaa.Seed.Model
             set;
         }
         /// <summary>
-        /// 程序用户ID
+        /// 解决方案名称
         /// </summary>	
         [DataMember]
-        public int AppUserID
+        public string SolutionName
         {
             get;
             set;
         }
         /// <summary>
-        /// 组件ID
+        /// 方案配置
+        /// </summary>	
+        [DataMember]
+        public string ConfigContent
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// 方案版本号
+        /// </summary>	
+        [DataMember]
+        public int Version
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// 是否文件存储
+        /// </summary>	
+        [DataMember]
+        public bool IsFile
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// 是否远程获取
         /// </summary>		
         [DataMember]
-        public int ComponetID
-        {
-            get;
-            set;
-        }
-        /// <summary>
-        /// 服务接口实现类完全限定名
-        /// 形式："类名, 程序集名, Version=1.0.0, Culture=neutral, PublicKeyToken=null"
-        /// </summary>	
-        [DataMember]
-        public string ComponentServiceCompeleteName
-        {
-            get;
-            set;
-        }
-        /// <summary>
-        /// 服务接口实现类名
-        ///  形式："类名"
-        /// </summary>	
-        [DataMember]
-        public string ComponentServiceName
-        {
-            get;
-            set;
-        }
-        /// <summary>
-        /// 程序集名称
-        /// </summary>	
-        [DataMember]
-        public string ComponentAssemblyName
-        {
-            get;
-            set;
-        }
-        /// <summary>
-        /// 程序集文件名称
-        /// </summary>	
-        [DataMember]
-        public string ComponentAssemblyFileName
-        {
-            get;
-            set;
-        }
-        /// <summary>
-        /// 程序集文件存储路径
-        /// </summary>	
-        [DataMember]
-        public string ComponentAssemblyFileStorePath
-        {
-            get;
-            set;
-        }
-        /// <summary>
-        /// 接口名称
-        /// </summary>
-        [DataMember]
-        public string ComponentInterface
-        {
-            get;
-            set;
-        }
-        /// <summary>
-        /// 程序集版本
-        /// </summary>		
-        [DataMember]
-        public string AssemblyVersion
+        public bool IsRemote
         {
             get;
             set;
@@ -122,7 +91,7 @@ namespace Hayaa.Seed.Model
         }
         /// <summary>
         /// CreateTime
-        /// </summary>
+        /// </summary>	
         [DataMember]
         public DateTime CreateTime
         {
@@ -138,16 +107,12 @@ namespace Hayaa.Seed.Model
             get;
             set;
         }
-        /// <summary>
-        /// 组建类型1是dll2是wcf
-        /// </summary>
+
         [DataMember]
-        public int ComponentType { get; set; }
-        /// <summary>
-        /// 服务地址
-        /// </summary>
+        public List<ComponentConfig> Components { get; set; }
         [DataMember]
-        public string ServiceUrl { get; set; }
+        public List<ServiceWorker> Workers { get; set; }
+
     }
 }
 

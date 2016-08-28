@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
-using System.Data;
+using System.Linq;
 using System.Runtime.Serialization;
-namespace Hayaa.Seed.Model
+using System.Text;
+
+namespace Hayaa.DistributedConfigService.Interface.Model
 {
-    //Rel_ConfigSolution_AppUser_Component
     [DataContract]
     public class ServiceWorker
     {
@@ -150,4 +150,3 @@ namespace Hayaa.Seed.Model
         public string ServiceUrl { get; set; }
     }
 }
-

@@ -7,5 +7,6 @@ namespace Hayaa.DistributedConfigService.Interface
 {
    public interface IDistributedConfigService
     {
+
     }
 }
