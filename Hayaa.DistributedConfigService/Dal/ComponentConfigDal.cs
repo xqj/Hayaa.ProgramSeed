@@ -2,21 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Hayaa.BaseComponent.DataAccess;
-using Hayaa.BaseComponent.DataAccess.Config;
 using Hayaa.DistributedConfigService.Config;
 using Hayaa.DistributedConfigService.Interface.Model;
 
 namespace Hayaa.DistributedConfigService.Dal
 {
-    class AppSolutionDal
+    class ComponentConfigDal
     {
-
-        internal static AppSolution Get(Guid solutionID)
+        internal static List<ComponentConfig> GetActiveComponentConfigs(Guid solutionID, int version)
         {
             var conStr = ConfigHelper.Intance.GetConnection("DistributedConfig_RW", "");
             var service = ConfigHelper.Intance.CreateDataService("DistributedConfig_RW");
-            return service.GetData<AppSolution, object>(conStr, "select * from AppSolution where [SolutionID]=@SolutionID", new { SolutionID = solutionID });
+            return service.GetList<ComponentConfig, object>(conStr, "select * from Rel_Solution_CompoentConfig where [SolutionID]=@SolutionID and [SolutionVersion]=@SolutionVersion and [IsActive]=1", new { SolutionID = solutionID, SolutionVersion= version });
         }
     }
 }

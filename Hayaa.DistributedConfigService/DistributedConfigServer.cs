@@ -15,7 +15,8 @@ namespace Hayaa.DistributedConfigService
             AppSolution appsoulution = AppSolutionDal.Get(solutionID);
             if (appsoulution != null)
             {
-                ComponentConfigDal.GetComponentConfigs(solutionID)
+                appsoulution.Components=ComponentConfigDal.GetActiveComponentConfigs(solutionID, version);
+                appsoulution.Workers = WorkersDal.GetActiveWorkers(solutionID);
             }
             return appsoulution;
         }

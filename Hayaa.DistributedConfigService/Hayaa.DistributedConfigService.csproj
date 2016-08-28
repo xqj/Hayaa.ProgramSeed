@@ -64,6 +64,8 @@
     <Compile Include="Config\DefineTable.cs" />
     <Compile Include="Config\DistributedConfig.cs" />
     <Compile Include="Dal\AppSolutionDal.cs" />
+    <Compile Include="Dal\ComponentConfigDal.cs" />
+    <Compile Include="Dal\WorkersDal.cs" />
     <Compile Include="DistributedConfigServer%271.cs" />
     <Compile Include="DistributedConfigServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
