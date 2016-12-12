@@ -7,7 +7,7 @@ using System.Xml;
 
 namespace Hayaa.Seed.Model
 {
-    
+
     /// <summary>
     /// 程序终节点配置
     /// 对应exe、website对象
@@ -15,6 +15,7 @@ namespace Hayaa.Seed.Model
     /// 此对象存储在程序对象本地config文件
     /// 不做远程数据配置
     /// </summary>
+    [Serializable]
     public class AppConfiguration : IConfigurationSectionHandler
     {
         public AppConfiguration()
@@ -89,6 +90,13 @@ namespace Hayaa.Seed.Model
         /// 本地哨兵服务地址
         /// </summary>
         public string LocalSentinelUrl { set; get; }
+        /// <summary>
+        /// 配置侦听地址
+        /// </summary>
+        public string AppConfigSentinelUrl { set; get; }
+        /// <summary>
+        /// 传输密匙
+        /// </summary>
         public string TransfersSecurityKey { get; set; }
 
         public object Create(object parent, object configContext, XmlNode section)

@@ -45,6 +45,8 @@ namespace Hayaa.Seed
                 var appConfig = ProgramDistributedConfig.Instance.GetAppConfig();
                 ///发送基础环境信息
                 SendbaseInfo(Environment, appConfig.SentinelUrl);
+                ///发送配置信息
+                SendAppConfigInfo(appConfig, appConfig.AppConfigSentinelUrl);
                 //检查是否支持服务工厂,支持服务工厂创建所有服务并将所有服务方法测试一遍
                 if (ProgramDistributedConfig.Instance.IsFactory())
                 {
@@ -60,13 +62,24 @@ namespace Hayaa.Seed
             return result;
         }
 
+        private void SendAppConfigInfo(AppConfiguration appConfig, string appConfigSentinelUrl)
+        {
+            Dictionary<string, string> paramters = new Dictionary<string, string>();
+            string info = JsonConvert.SerializeObject(appConfig);
+            paramters.Add(DefineTable.AppConfig, info);
+            paramters.Add(DefineTable.SentinelSign, SecurityProvider.GetMd5Sign(info));
+            var r=HttpRequestHelper.Instance.GetNormalRequestResult(appConfigSentinelUrl, paramters);
+            // LoggerPool.Instance.DefaultLogger.Info("SendAppConfigInfo结果:{0}", r);
+        }
+
         private void SendbaseInfo(InstanceEnvironmentInfo environment, string sentinelUrl)
         {
             Dictionary<string, string> paramters = new Dictionary<string, string>();
             string info = JsonConvert.SerializeObject(environment);
             paramters.Add(DefineTable.Eveinfo, info);
-            paramters.Add(DefineTable.SentinelSign, SecurityProvider.GetMd5Sign(info));         
-            HttpRequestHelper.Instance.GetNormalRequestResult(sentinelUrl, paramters);
+            paramters.Add(DefineTable.SentinelSign, SecurityProvider.GetMd5Sign(info));
+            var r = HttpRequestHelper.Instance.GetNormalRequestResult(sentinelUrl, paramters);
+            // LoggerPool.Instance.DefaultLogger.Info("SendAppConfigInfo结果:{0}", r);
         }
     }
 }

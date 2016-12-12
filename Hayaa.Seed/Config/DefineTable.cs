@@ -5,11 +5,12 @@ using System.Text;
 
 namespace Hayaa.Seed.Config
 {
-    internal class DefineTable
+    public class DefineTable
     {
+        internal static readonly string AppConfig = "appconfiginfo";
         internal static readonly string Eveinfo = "eveinfo";
         internal static readonly string GetRmoteConfigAction="getconfig";
-        internal static readonly string SentinelSign;
+        internal static readonly string SentinelSign = "ssign";
         internal static readonly string SolutionIDParam= "sid";
     }
 }
