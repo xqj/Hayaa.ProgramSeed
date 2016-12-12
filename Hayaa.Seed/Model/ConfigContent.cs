@@ -25,55 +25,55 @@ namespace Hayaa.Seed.Model
     public class AppSettings
     {
         [DataMember]
-        [XmlElement]
-        public List<AppSetAddClass> add;
+        [XmlElement("add")]
+        public List<AppSetAddInfo> Adds;
         [DataContract]
-        public class AppSetAddClass
+        public class AppSetAddInfo
         {
             [DataMember]
-            [XmlAttribute]
-            public string key;
+            [XmlAttribute("key")]
+            public string Key;
             [DataMember]
-            [XmlAttribute]
-            public string value;
+            [XmlAttribute("value")]
+            public string Value;
         }
     }
     [DataContract]
     public class ConnectionStrings
     {
         [DataMember]
-        [XmlElement]
-        public List<ConAddClass> add;
+        [XmlElement("add")]
+        public List<ConAddClass> Adds;
         [DataContract]
         public class ConAddClass
         {
             [DataMember]
-            [XmlAttribute]
+            [XmlAttribute("name")]
             public string name;
             [DataMember]
-            [XmlAttribute]
+            [XmlAttribute("connectionString")]
             public string connectionString;
             private EnumDatabaseType _databaseType = EnumDatabaseType.SqlServer;
             /// <summary>
             /// 数据库类型
             /// </summary>
             [DataMember]
-            [XmlAttribute]
-            public EnumDatabaseType databaseType { set { _databaseType = value; } get { return _databaseType; } }
+            [XmlAttribute("databaseType")]
+            public EnumDatabaseType DatabaseType { set { _databaseType = value; } get { return _databaseType; } }
             private bool _multipleBase = false;
             /// <summary>
             /// 是否分库
             /// </summary>
             [DataMember]
-            [XmlAttribute]
-            public bool multipleBase { set { _multipleBase = value; } get { return _multipleBase; } }
+            [XmlAttribute("multipleBase")]
+            public bool MultipleBase { set { _multipleBase = value; } get { return _multipleBase; } }
             private EnumMultipleType _multipleType = EnumMultipleType.MultipleByMode;
             /// <summary>
             /// 分库模式
             /// </summary>
             [DataMember]
-            [XmlAttribute]
-            public EnumMultipleType multipleType { set { _multipleType = value; } get { return _multipleType; } }
+            [XmlAttribute("multipleType")]
+            public EnumMultipleType MultipleType { set { _multipleType = value; } get { return _multipleType; } }
         }
     }
     public enum EnumDatabaseType
@@ -101,42 +101,42 @@ namespace Hayaa.Seed.Model
     public class ServiceModelClass
     {
         [DataMember]
-        [XmlElement]
-        public List<BindingClass> binding;
+        [XmlElement("binding")]
+        public List<BindingInfo> Binding;
         [DataMember]
-        [XmlElement]
-        public List<Endpoint> endpoint;
+        [XmlElement("endpoint")]
+        public List<Endpoint> Endpoints;
         [DataContract]
-        public class BindingClass
+        public class BindingInfo
         {
             [DataMember]
-            [XmlAttribute]
-            public string name;
+            [XmlAttribute("name")]
+            public string Name;
             [DataMember]
-            [XmlAttribute]
-            public int maxBufferPoolSize;
+            [XmlAttribute("maxBufferPoolSize")]
+            public int MaxBufferPoolSize;
             [DataMember]
-            [XmlAttribute]
-            public int maxReceivedMessageSize;
+            [XmlAttribute("maxReceivedMessageSize")]
+            public int MaxReceivedMessageSize;
         }
         [DataContract]
         public class Endpoint
         {
             [DataMember]
-            [XmlAttribute]
-            public string address;
+            [XmlAttribute("address")]
+            public string Address;
             [DataMember]
-            [XmlAttribute]
-            public string binding;
+            [XmlAttribute("binding")]
+            public string Binding;
             [DataMember]
-            [XmlAttribute]
-            public string bindingConfiguration;
+            [XmlAttribute("bindingConfiguration")]
+            public string BindingConfiguration;
             [DataMember]
-            [XmlAttribute]
-            public string contract;
+            [XmlAttribute("contract")]
+            public string Contract;
             [DataMember]
-            [XmlAttribute]
-            public string name;
+            [XmlAttribute("name")]
+            public string Name;
         }
     }
 }

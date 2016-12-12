@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Hayaa.Seed.Component.ProgramDistributedConfig" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BABUCAAQAAiAAAIAAAACgAAQAAAAEAAAQAAAAAABAAA=</HashCode>
+      <FileName>Component\ProgramDistributedConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hayaa.Seed.Component.InitResult" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Component\ProgramDistributedConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hayaa.Seed.Component.ProgramDoctorService" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAIAAAAAAAAAAAAAAAAAAAAAAAAAQAAACAAAAAA=</HashCode>
+      <FileName>Component\ProgramDoctorService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hayaa.Seed.Component.ProgramInstanceEnvironment" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAEAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Component\ProgramInstanceEnvironment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hayaa.Seed.Component.ProgramPlatformServiceFactory" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAIAAAAAAAAAAEAAAAAAAAACABAAQAAIAABABAA=</HashCode>
+      <FileName>Component\ProgramPlatformServiceFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hayaa.Seed.Component.ProgramSentinel" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAABAAAAAAQA=</HashCode>
+      <FileName>Component\ProgramSentinel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hayaa.Seed.Config.DefineTable" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Config\DefineTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hayaa.Seed.Model.AppConfiguration" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IEAAAAAAAAEAAAAAACAAAAQAAEEAAMAAGAAIBAAAQAA=</HashCode>
+      <FileName>Model\AppConfiguration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Hayaa.Seed.Model.AppSolution" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAACQAAAQAEgIAAkAAAAAAAAAGAAAAAAAAoAAAAAAA=</HashCode>
+      <FileName>Model\AppSolution.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hayaa.Seed.Model.ComponentConfig" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAIAAAAAgAAgIAAkAQAACAAAAEAAEAAAAAQAAAAAAA=</HashCode>
+      <FileName>Model\ComponentConfigs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hayaa.Seed.Model.ConfigContent" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAABAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Model\ConfigContent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hayaa.Seed.Model.AppSettings" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ConfigContent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hayaa.Seed.Model.ConnectionStrings" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ConfigContent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hayaa.Seed.Model.ServiceModelClass" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Model\ConfigContent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hayaa.Seed.Model.ConfigTool&lt;T&gt;" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAACACACAAJAAIAQAAAEAEAEAAMAACCAAABIAIAA=</HashCode>
+      <FileName>Model\ConfigTool.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hayaa.Seed.Model.InstanceEnvironmentInfo" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAABAAQAAAAAAAAAAAACAAAAAAAAAAAAAEAQAAA=</HashCode>
+      <FileName>Model\InstanceEnvironmentInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hayaa.Seed.Model.ServiceWorker" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAQAAAABUiAAAkAAEgAAAAAEAEAAABAgAAAAAAAA=</HashCode>
+      <FileName>Model\Rel_ConfigSolution_AppUser_Component.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hayaa.Seed.ProgramSeed" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAALAAAAAAAAAAAAAAAAAAAAAAAAQIAAAAAAAAA=</HashCode>
+      <FileName>ProgramSeed.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hayaa.Seed.SentinelService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SentinelService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Hayaa.Seed.Util.FunctionResultProxy" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Util\FunctionResultProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hayaa.Seed.Util.HttpRequestHelper" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAEAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Util\HttpRequestHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hayaa.Seed.Util.SecurityProvider" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAgAAAACACAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Util\SecurityProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hayaa.Seed.Util.ApiStoreUser" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAQAAAAABAAA=</HashCode>
+      <FileName>Util\SecurityProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hayaa.Seed.Util.ServiceFactory" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAlAAAAAAABAAAAAAAAAAAAAAAAAAAAQAAAAABAAEA=</HashCode>
+      <FileName>Util\ServiceFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hayaa.Seed.Util.Util" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Util\Util.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hayaa.Seed.Util.XmlConfigSerializer" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAEAAAAACAAAAAAAAAAAABAAAAEQCBAAAAAAAA=</HashCode>
+      <FileName>Util\XmlConfigSerializer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Hayaa.Seed.Model.EnumDatabaseType" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ConfigContent.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Hayaa.Seed.Model.EnumMultipleType" Collapsed="true">
+    <Position X="2.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>Model\ConfigContent.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

@@ -186,6 +186,10 @@ namespace Hayaa.Seed.Component
             }
             return result;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private AppConfiguration ReadAppConfig()
         {
             AppConfiguration r = new AppConfiguration()

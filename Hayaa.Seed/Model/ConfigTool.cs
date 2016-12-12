@@ -88,10 +88,10 @@ namespace Hayaa.Seed.Model
             else
             {
                 var baseConfig = (ConfigContent)_config;
-                var con = baseConfig.connectionStrings.add.Find(c => c.name == name);
+                var con = baseConfig.connectionStrings.Adds.Find(c => c.name == name);
                 if (con != null)
                 {
-                    return con.databaseType;
+                    return con.DatabaseType;
                 }
                 return databaseType;
             }
@@ -116,10 +116,10 @@ namespace Hayaa.Seed.Model
        private string GetCon(string name, string defaultVal, long multipleFiled)
        {
            var baseConfig = (ConfigContent)_config;
-           var con = baseConfig.connectionStrings.add.Find(c => c.name == name);
+           var con = baseConfig.connectionStrings.Adds.Find(c => c.name == name);
             if (con != null) {
                
-                return ParseCon(con.connectionString, multipleFiled, con.multipleType); }
+                return ParseCon(con.connectionString, multipleFiled, con.MultipleType); }
            return defaultVal;
         }  /// <summary>
            /// 分库的链接字符串形式:数据库名_{0}的模板化配置
@@ -164,8 +164,8 @@ namespace Hayaa.Seed.Model
        private string GetAppset(string key, string defaultVal)
        {
            var baseConfig = (ConfigContent)_config;
-           var con = baseConfig.appSettings.add.Find(c => c.key == key);
-           if (con != null) return con.value;
+           var con = baseConfig.appSettings.Adds.Find(c => c.Key == key);
+           if (con != null) return con.Value;
            return defaultVal;
        }
     }
