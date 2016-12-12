@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using Hayaa.Seed.Component;
 using Hayaa.Seed.Model;
+using Hayaa.Seed.Util;
+using Newtonsoft.Json;
+using Hayaa.Seed.Config;
 
 namespace Hayaa.Seed
 {
@@ -35,16 +38,20 @@ namespace Hayaa.Seed
                 Environment= _ProgramInstanceEnvironment.ScanEnvironment();
                 ///创建侦听服务
                 //web创建侦听页，非web创建tcp侦听线程
-                result=_ProgramSentinel.InitSentinelService();
+                result=_ProgramSentinel.InitSentinelService(Environment.IsWeb);
                 ///检查本地配置是否支持分布式配置系统
                 //支持分布式配置系统则获取配置
                 ProgramDistributedConfig.Instance.RunInAppStartInit();
+                var appConfig = ProgramDistributedConfig.Instance.GetAppConfig();
+                ///发送基础环境信息
+                SendbaseInfo(Environment, appConfig.SentinelUrl);
                 //检查是否支持服务工厂,支持服务工厂创建所有服务并将所有服务方法测试一遍
                 if (ProgramDistributedConfig.Instance.IsFactory())
                 {
                     string msg = "";
                     ProgramDoctorService.Instance.Test(ref msg);
                 }
+                //TODO发送检测与服务工厂的信息
             }
             catch(Exception ex)
             {
@@ -53,6 +60,13 @@ namespace Hayaa.Seed
             return result;
         }
 
-      
+        private void SendbaseInfo(InstanceEnvironmentInfo environment, string sentinelUrl)
+        {
+            Dictionary<string, string> paramters = new Dictionary<string, string>();
+            string info = JsonConvert.SerializeObject(environment);
+            paramters.Add(DefineTable.Eveinfo, info);
+            paramters.Add(DefineTable.SentinelSign, SecurityProvider.GetMd5Sign(info));         
+            HttpRequestHelper.Instance.GetNormalRequestResult(sentinelUrl, paramters);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hayaa.Seed.Component;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -39,7 +40,7 @@ namespace Hayaa.Seed.Util
            string key = DateTime.Now.ToString("yyyyMMdd");
            try
            {
-               key = ConfigurationManager.AppSettings["ApiClient_SecurityKey"];
+               key = ProgramDistributedConfig.Instance.GetAppConfig().TransfersSecurityKey;
            }
            catch
            {
@@ -47,39 +48,36 @@ namespace Hayaa.Seed.Util
            }
            return GetMd5(key);
        }
-       public static bool VerifyPassword(string password){
+        public static bool VerifyPassword(string password)
+        {
             string key = DateTime.Now.ToString("yyyyMMdd");
-           try
-           {
-               key = ConfigurationManager.AppSettings["ApiClient_SecurityKey"];
-           }
-           catch
-           {
+            try
+            {
+                key = ProgramDistributedConfig.Instance.GetAppConfig().TransfersSecurityKey;
+            }
+            catch
+            {
 
-           }
-           return VerifyMd5(key,password);
-   }
+            }
+            return VerifyMd5(key, password);
+        }
+        public static string GetMd5Sign(string info)
+        {            
+            return GetMd5(info);
+        }
+        public static bool VerifyMd5Sign(string infoSign)
+        {
+            string key = DateTime.Now.ToString("yyyyMMdd");
+            try
+            {
+                key = ProgramDistributedConfig.Instance.GetAppConfig().TransfersSecurityKey;
+            }
+            catch
+            {
 
-       internal static ApiStoreUser GetApiStoreUser()
-       {
-           string userName="",userPwd="",token="";
-           try
-           {
-             List<string> str=  ConfigurationManager.AppSettings["ApiStoreServiceUser"].Split(';').ToList();
-             userName = str.Find(a=>a.Contains("username")).Replace("username=","");
-             userPwd = str.Find(a => a.Contains("password")).Replace("password=", "");
-             token = str.Find(a => a.Contains("token")).Replace("token=", "");
-           }
-           catch { }
-           return new ApiStoreUser() { 
-            Password=userPwd,
-             Token=token,
-              UserName=userName
-           };
-       }
+            }
+            return VerifyMd5(key, infoSign);
+        }
     }
-   internal class ApiStoreUser { public string UserName { set; get; }
-   public string Password { set; get; }
-   public string Token { set; get; }
-   }
+  
 }

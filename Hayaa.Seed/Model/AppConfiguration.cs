@@ -23,8 +23,12 @@ namespace Hayaa.Seed.Model
             IsConnectionStringWebConfig = true;
             IsDistrbutedConfig = false;
         }
+        /// <summary>
+        /// 是否远程配置
+        /// </summary>
         public bool IsDistrbutedConfig
         { set; get; }
+        ///
         public bool IsAppSettingWebConfig
         { set; get; }
         public bool IsConnectionStringWebConfig
@@ -47,14 +51,16 @@ namespace Hayaa.Seed.Model
             get;
             set;
         }
-
-        public virtual Guid SolutionId
+        /// <summary>
+        /// 程序配置方案ID
+        /// </summary>
+        public virtual Guid AppConfigID
         {
             get;
             set;
         }
         /// <summary>
-        /// 解决方案版本
+        /// 程序配置方案版本
         /// </summary>
         public virtual int Version
         {
@@ -76,9 +82,14 @@ namespace Hayaa.Seed.Model
         /// </summary>
         public bool IsVirtualPath { set; get; }
         /// <summary>
-        /// 服务侦听地址
+        /// 哨兵服务侦听地址
         /// </summary>
         public string SentinelUrl { set; get; }
+        /// <summary>
+        /// 本地哨兵服务地址
+        /// </summary>
+        public string LocalSentinelUrl { set; get; }
+        public string TransfersSecurityKey { get; set; }
 
         public object Create(object parent, object configContext, XmlNode section)
         {
@@ -90,16 +101,22 @@ namespace Hayaa.Seed.Model
                 configObj.IsDistrbutedConfig = Convert.ToBoolean(baseConfig.Attributes["IsDistrbutedConfig"].Value);
                 configObj.IsFileLoad = Convert.ToBoolean(baseConfig.Attributes["IsFileLoad"].Value);
                 configObj.IsRemote = Convert.ToBoolean(baseConfig.Attributes["IsRemote"].Value);
-                configObj.SolutionId =  Guid.Parse(baseConfig.Attributes["SolutionId"].Value);
-                configObj.Version =Convert.ToInt32(baseConfig.Attributes["Version"].Value);
+                configObj.AppConfigID = Guid.Parse(baseConfig.Attributes["SolutionId"].Value);
+                configObj.Version = Convert.ToInt32(baseConfig.Attributes["Version"].Value);
                 configObj.RemoteConfigServer = baseConfig.Attributes["RemoteConfigServer"].Value;
                 configObj.LocalConfigFilePath = baseConfig.Attributes["LocalConfigFilePath"].Value;
                 configObj.ConfigFileName = baseConfig.Attributes["ConfigFileName"].Value;
                 configObj.AppID = Convert.ToInt32(baseConfig.Attributes["AppID"].Value);
                 configObj.IsVirtualPath = Convert.ToBoolean(baseConfig.Attributes["IsVirtualPath"].Value);
                 configObj.SentinelUrl = baseConfig.Attributes["SentinelUrl"].Value;
+                configObj.LocalSentinelUrl = baseConfig.Attributes["LocalSentinelUrl"].Value;
                 configObj.IsAppSettingWebConfig = Convert.ToBoolean(baseConfig.Attributes["IsAppSettingWebConfig"].Value);
                 configObj.IsConnectionStringWebConfig = Convert.ToBoolean(baseConfig.Attributes["IsConnectionStringWebConfig"].Value);
+                configObj.TransfersSecurityKey = baseConfig.Attributes["TransfersSecurityKey"].Value;
+            }
+            else
+            {
+                // LoggerPool.Instance.DefaultLogger.Error("AppConfiguration没有配置");
             }
             return configObj;
         }

@@ -47,48 +47,10 @@ namespace Hayaa.Seed.Component
             }
             catch (Exception ex)
             {
-                _appConfig = new AppConfiguration() { IsFileLoad = true, Version = 0, SolutionId = Guid.Empty, IsRemote = false };//错误配置下给予最小化配置               
+                _appConfig = new AppConfiguration() { IsFileLoad = true, Version = 0, AppConfigID = Guid.Empty, IsRemote = false };//错误配置下给予最小化配置               
             }
         }
-        internal bool IsEmpty()
-        {
-            if (_solutionConfig.SolutionID.Equals(Guid.Empty))
-            {
-                return true;
-            }
-            return false;
-        }
-        internal bool IsFactory()
-        {
-            return _solutionConfig.IsFactory;
-        }
-        /// <summary>
-        /// 在程序第一次运行时运行此方法获取配置
-        /// </summary>
-        /// <returns></returns>
-        public InitResult RunInAppStartInit()
-        {
-            var r = new InitResult() { Result = true };
-            if (_appConfig.IsRemote)//判断是否读取远程配置模式
-            {
-                ReadRemote(_appConfig);//读取远程配置
-            }
-            ReadLocal(_appConfig, r);//读取本地配置 
-            return r;
-        }
-        public ComponentConfig GetComponentConfig(int componetID)
-        {
-            //构造函数完成无null初始化设置
-            return _solutionConfig.Components.Find(c => c.ComponentID == componetID);
-        }
-        public List<ServiceWorker> GetServiceWorkers()
-        {
-            return _solutionConfig.Workers;
-        }
-        public AppConfiguration GetAppConfig()
-        {
-            return _appConfig;
-        }
+       
         /// <summary>
         /// 本地配置模式下只有一个方案序列化文件
         /// </summary>
@@ -146,7 +108,7 @@ namespace Hayaa.Seed.Component
                     localconfig = ReadLocal(appConfig);
                 }
                 //远程拉取配置文件
-                var remoteConfig = GetRemote(appConfig.RemoteConfigServer, appConfig.SolutionId);
+                var remoteConfig = GetRemote(appConfig.RemoteConfigServer, appConfig.AppConfigID);
                 //判断配置文件的新鲜程度
                 if (remoteConfig != null)//无法获取远程配置时不更新本地
                 {
@@ -171,10 +133,7 @@ namespace Hayaa.Seed.Component
             AppSolution result = null;
             try
             {
-                var apiStoreUser = SecurityProvider.GetApiStoreUser();
-               // dic.Add(DefineTable.ApiStore_UserNameParam, apiStoreUser.UserName);
-               // dic.Add(DefineTable.ApiStore_PasswordParam, apiStoreUser.Password);
-               // dic.Add(DefineTable.ApiStore_TokenParam, apiStoreUser.Token);
+               /// var apiStoreUser = SecurityProvider.GetApiStoreUser();
                 str = HttpRequestHelper.Instance.GetNormalRequestResult(url + "/" + DefineTable.GetRmoteConfigAction, dic);
                 str = HttpUtility.UrlDecode(str);
                 result = XmlConfigSerializer.Instance.FromXml<AppSolution>(str);
@@ -215,10 +174,48 @@ namespace Hayaa.Seed.Component
             }
             return r;
         }
-
-        internal AppSolution GetLocalConfig()
+        public AppSolution GetLocalConfig()
         {
             return ReadLocal(_appConfig);
+        }
+        public bool IsEmpty()
+        {
+            if (_solutionConfig.SolutionID.Equals(Guid.Empty))
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool IsFactory()
+        {
+            return _solutionConfig.IsFactory;
+        }
+        /// <summary>
+        /// 在程序第一次运行时运行此方法获取配置
+        /// </summary>
+        /// <returns></returns>
+        public InitResult RunInAppStartInit()
+        {
+            var r = new InitResult() { Result = true };
+            if (_appConfig.IsRemote)//判断是否读取远程配置模式
+            {
+                ReadRemote(_appConfig);//读取远程配置
+            }
+            ReadLocal(_appConfig, r);//读取本地配置 
+            return r;
+        }
+        public ComponentConfig GetComponentConfig(int componetID)
+        {
+            //构造函数完成无null初始化设置
+            return _solutionConfig.Components.Find(c => c.ComponentID == componetID);
+        }
+        public List<ServiceWorker> GetServiceWorkers()
+        {
+            return _solutionConfig.Workers;
+        }
+        public AppConfiguration GetAppConfig()
+        {
+            return _appConfig;
         }
     }
     public class InitResult

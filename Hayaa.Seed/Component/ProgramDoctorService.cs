@@ -26,7 +26,8 @@ namespace Hayaa.Seed.Component
             {
                 msg = "无服务实例配置数据";
                 return false;
-            }           
+            }
+            string testMsg = "";
             _serviceData.ForEach(a => {
                 if (a == null) return;
                 if (a.ComponentType == 2) return;
@@ -41,10 +42,14 @@ namespace Hayaa.Seed.Component
                     }
                     catch (Exception ex)
                     {
-
+                        testMsg = testMsg +"方法:"+ methods[i].Name+"未通过测试;";
                     }
                 }
             });
+            if (!string.IsNullOrEmpty(testMsg))
+            {
+                msg = testMsg;
+            }else
             msg = "测试通过";
             
             return true;

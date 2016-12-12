@@ -9,12 +9,12 @@ namespace Hayaa.Seed.Component
 {
    public class ProgramSentinel
     {
-        internal string InitSentinelService()
+        internal string InitSentinelService(bool isWebSystem)
         {
-            if (HttpContext.Current==null) {
-              return  CreateWindowsSentinel();
+            if (isWebSystem) {
+                return CreateWebSentinel();               
             } else {
-                return CreateWebSentinel();
+                return CreateWindowsSentinel();
             }
         }
 

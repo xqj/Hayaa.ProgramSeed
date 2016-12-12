@@ -10,3 +10,5 @@ G:\Projects\Github\Hayaa.ProgramSeed\Hayaa.Seed\bin\Debug\Hayaa.Seed.pdb
 G:\Projects\Github\Hayaa.ProgramSeed\Hayaa.Seed\obj\Debug\Hayaa.Seed.csprojResolveAssemblyReference.cache
 G:\Projects\Github\Hayaa.ProgramSeed\Hayaa.Seed\obj\Debug\Hayaa.Seed.dll
 G:\Projects\Github\Hayaa.ProgramSeed\Hayaa.Seed\obj\Debug\Hayaa.Seed.pdb
+G:\Projects\Github\Hayaa.ProgramSeed\Hayaa.Seed\bin\Debug\Newtonsoft.Json.dll
+G:\Projects\Github\Hayaa.ProgramSeed\Hayaa.Seed\bin\Debug\Newtonsoft.Json.xml

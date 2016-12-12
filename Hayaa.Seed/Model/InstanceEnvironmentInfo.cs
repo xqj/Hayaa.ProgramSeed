@@ -6,6 +6,7 @@ using System.Text;
 
 namespace Hayaa.Seed.Model
 {
+    [Serializable]
     class InstanceEnvironmentInfo
     {
         /// <summary>
@@ -15,7 +16,7 @@ namespace Hayaa.Seed.Model
         /// <summary>
         /// 机器名
         /// </summary>
-        public string MachineName { get { return Environment.MachineName; } }
+        public string MachineName { get { return Environment.MachineName; } } 
         /// <summary>
         /// 处理器个数
         /// </summary>
@@ -32,6 +33,13 @@ namespace Hayaa.Seed.Model
         /// 部署目录
         /// </summary>
         public string HostBaseDirectory { get {return AppDomain.CurrentDomain.BaseDirectory; } }
-
+        /// <summary>
+        /// 系统类型
+        /// </summary>
+        public bool IsWeb { set; get; }
+        /// <summary>
+        /// 服务端口
+        /// </summary>
+        public int ServicePort { set; get; }
     }
 }
