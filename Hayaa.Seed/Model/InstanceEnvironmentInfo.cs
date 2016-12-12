@@ -24,6 +24,14 @@ namespace Hayaa.Seed.Model
         /// 操作系统ip
         /// </summary>
         public List<IPAddress> SystemIPs { set; get; }
-       
+        /// <summary>
+        /// 应用程序池或者宿主启动程序名字
+        /// </summary>
+        public string AppPool { set; get; }
+        /// <summary>
+        /// 部署目录
+        /// </summary>
+        public string HostBaseDirectory { get {return AppDomain.CurrentDomain.BaseDirectory; } }
+
     }
 }
