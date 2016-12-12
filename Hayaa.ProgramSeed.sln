@@ -1,13 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hayaa.Seed", "Hayaa.Seed\Hayaa.Seed.csproj", "{B00B37B2-0637-4E7F-9D26-14BD653B2CA1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{5F9736D7-B037-489E-BD5D-621C878B2B8B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hayaa.SeedTest", "Hayaa.SeedTest\Hayaa.SeedTest.csproj", "{30C10711-96ED-4730-8DA3-A69E2183B94E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Components", "Components", "{5E1A96A9-9999-4A7C-8DBA-7C37E93A11D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{A1936FF4-5F7D-4619-BF54-9F02473C8D3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hayaa.ProgramSeedServiceSite", "Hayaa.ProgramSeedServiceSite\Hayaa.ProgramSeedServiceSite.csproj", "{BC21425D-DB3B-45B9-9AF1-3A668C305197}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,11 +29,17 @@ Global
 		{30C10711-96ED-4730-8DA3-A69E2183B94E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30C10711-96ED-4730-8DA3-A69E2183B94E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30C10711-96ED-4730-8DA3-A69E2183B94E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC21425D-DB3B-45B9-9AF1-3A668C305197}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC21425D-DB3B-45B9-9AF1-3A668C305197}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC21425D-DB3B-45B9-9AF1-3A668C305197}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC21425D-DB3B-45B9-9AF1-3A668C305197}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{B00B37B2-0637-4E7F-9D26-14BD653B2CA1} = {5E1A96A9-9999-4A7C-8DBA-7C37E93A11D0}
 		{30C10711-96ED-4730-8DA3-A69E2183B94E} = {5F9736D7-B037-489E-BD5D-621C878B2B8B}
+		{BC21425D-DB3B-45B9-9AF1-3A668C305197} = {A1936FF4-5F7D-4619-BF54-9F02473C8D3C}
 	EndGlobalSection
 EndGlobal
