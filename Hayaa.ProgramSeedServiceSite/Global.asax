@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Hayaa.ProgramSeedServiceSite.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Hayaa.ProgramSeedServiceSite.WebApiApplication" Language="C#" %>
