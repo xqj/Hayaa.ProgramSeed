@@ -18,7 +18,7 @@ namespace Hayaa.Seed.Util
                 return _instance;
             }
         }
-        private XmlConfigSerializer()
+        static XmlConfigSerializer()
         {
 
         }
